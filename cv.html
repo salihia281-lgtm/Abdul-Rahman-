@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Rahman Salehi | IT Engineer | Interactive CV</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #00d9ff;
+            --secondary-color: #9d4edd;
+            --accent-color: #ff9e00;
+            --dark-bg: #0a0a1f;
+            --darker-bg: #050510;
+            --card-bg: rgba(15, 20, 40, 0.85);
+            --text-light: #f0f8ff;
+            --text-muted: #b0c4de;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(157, 78, 221, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 217, 255, 0.1) 0%, transparent 20%);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(10, 10, 30, 0.5);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            border-radius: 5px;
+        }
+        
+        /* Navbar */
+        .navbar {
+            background-color: rgba(5, 5, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+            padding: 1.2rem 0;
+            transition: all 0.4s ease;
+        }
+        
+        .navbar-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary-color) !important;
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .navbar-brand span {
+            color: var(--secondary-color);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 0.8rem;
+            color: var(--text-light) !important;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+        
+        .hero-text {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+        
+        .contact-info {
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 217, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+        }
+        
+        /* Animated Elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+        }
+        
+        .floating-1 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--primary-color), transparent 70%);
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--secondary-color), transparent 70%);
+            bottom: 10%;
+            left: 5%;
+            animation-delay: 2s;
+        }
+        
+        .floating-3 {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--accent-color), transparent 70%);
+            top: 50%;
+            right: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) scale(1.05);
+            }
+        }
+        
+        /* Buttons */
+        .btn-atom {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            color: #000;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0, 217, 255, 0.3);
+            z-index: 1;
+        }
+        
+        .btn-atom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+        
+        .btn-atom:hover::before {
+            width: 100%;
+        }
+        
+        .btn-atom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.5);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            bottom: -10px;
+            left: 0;
+            border-radius: 10px;
+        }
+        
+        /* Cards */
+        .card-atom {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .card-atom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+            transition: height 0.5s ease;
+        }
+        
+        .card-atom:hover::before {
+            height: 100%;
+        }
+        
+        .card-atom:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 217, 255, 0.2);
+            border-color: rgba(0, 217, 255, 0.3);
+        }
+        
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 217, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            border: 2px solid rgba(0, 217, 255, 0.3);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            box-shadow: 0 0 10px rgba(0, 217, 255, 0.8);
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        /* Skills */
+        .skill-item {
+            margin-bottom: 25px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            width: 0;
+            transition: width 1.5s ease;
+        }
+        
+        /* Certifications */
+        .cert-badge {
+            display: inline-block;
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 20px;
+            padding: 8px 20px;
+            margin: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .cert-badge:hover {
+            background: rgba(0, 217, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(5, 5, 20, 0.95);
+            border-top: 1px solid rgba(0, 217, 255, 0.1);
+            padding: 60px 0 30px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 217, 255, 0.1);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+        
+        .social-icons a:hover {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: #000;
+            transform: translateY(-5px);
+            border-color: transparent;
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .slide-in-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .slide-in-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .floating-1, .floating-2, .floating-3 {
+                opacity: 0.2;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Elements -->
+    <div class="floating-element floating-1"></div>
+    <div class="floating-element floating-2"></div>
+    <div class="floating-element floating-3"></div>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">C<span>V </span> .</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 hero-content slide-in-left">
+                    <h6 class="hero-subtitle">Hello, I'm</h6>
+                    <h1 class="hero-title">Abdul Rahman "Salehi"</h1>
+                    <h3 class="hero-subtitle">IT Engineer at Zoombyte IT Services</h3>
+                    <p class="hero-text">A dedicated and solution-driven IT Engineer with a strong foundation in networking, system administration, and IT support. Skilled in tools such as Cisco Packet Tracer, PNETLAB, and Windows/Linux systems.</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-telephone"></i>
+                            </div>
+                            <span>0784452030</span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-envelope"></i>
+                            </div>
+                            <span>salihia281@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-geo-alt"></i>
+                            </div>
+                            <span>Salim karyan 12th District 2nd Street</span>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="bi bi-linkedin"></i>
+                            </div>
+                            <span>linkedin.com/Abdul Rahman</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="#contact" class="btn btn-atom me-3 mb-3">Contact Me</a>
+                        <a href="#experience" class="btn btn-atom mb-3">View Experience</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 slide-in-right">
+                    <div class="card-atom p-4">
+                        <div class="card-icon mx-auto">
+                            <i class="bi bi-laptop"></i>
+                        </div>
+                        <h4 class="text-center mb-3">IT Engineer</h4>
+                        <p class="text-center">Specializing in networking, system administration, and IT support with certifications in Network+, CCNA, and CCNP.</p>
+                        <div class="text-center mt-4">
+                            <span class="cert-badge">Network+</span>
+                            <span class="cert-badge">CCNA</span>
+                            <span class="cert-badge">CCNP</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">About Me</h2>
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card-atom fade-in">
+                        <p>I am a dedicated and solution-driven IT Engineer with a strong foundation in networking, system administration, and IT support. I have experience working with hardware, software, and network infrastructure, and I am skilled in tools such as Cisco Packet Tracer, PNETLAB, and Windows/Linux systems.</p>
+                        <p class="mt-3">I enjoy solving technical problems, learning new technologies, and contributing to efficient and secure IT environments. I work well in teams, communicate clearly, and always aim to improve performance and reliability in every project I work on.</p>
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h5 class="mb-3">Technical Focus</h5>
+                                <ul>
+                                    <li class="mb-2">Networking & Infrastructure</li>
+                                    <li class="mb-2">System Administration</li>
+                                    <li class="mb-2">IT Support & Troubleshooting</li>
+                                    <li class="mb-2">Network Security</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="mb-3">Personal Attributes</h5>
+                                <ul>
+                                    <li class="mb-2">Solution-Driven Mindset</li>
+                                    <li class="mb-2">Team Collaboration</li>
+                                    <li class="mb-2">Clear Communication</li>
+                                    <li class="mb-2">Continuous Learning</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="bg-dark">
+        <div class="container">
+            <h2 class="section-title fade-in">Job Experience</h2>
+            <div class="row mt-5">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card-atom fade-in">
+                        <h3 class="mb-4">Junior IT Engineer at Zoombyte IT Services</h3>
+                        <p class="timeline-date">February 3, 2024 - July 5, 2025</p>
+                        
+                        <h5 class="mt-4 mb-3">IT Instructor Responsibilities:</h5>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <p>Configured and maintained routers and switches using Cisco IOS.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p>Implemented routing protocols such as OSPF, EIGRP, and BGP in lab and production environments.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p>Monitored network performance and resolved connectivity issues.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p>Designed and tested topologies using Packet Tracer and PNETLAB.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <p>Assisted in securing networks using access control lists (ACLs) and NAT.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-5">
+                            <div class="col-md-6 mb-4">
+                                <div class="card-atom h-100">
+                                    <div class="card-icon">
+                                        <i class="bi bi-router"></i>
+                                    </div>
+                                    <h5>Network Configuration</h5>
+                                    <p>Expertise in configuring and maintaining routers and switches using Cisco IOS for optimal network performance.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <div class="card-atom h-100">
+                                    <div class="card-icon">
+                                        <i class="bi bi-shield-check"></i>
+                                    </div>
+                                    <h5>Network Security</h5>
+                                    <p>Implemented security measures including ACLs and NAT to protect network infrastructure from threats.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title fade-in">Education & Certifications</h2>
+            <div class="row mt-5">
+                <div class="col-lg-6 mb-4 slide-in-left">
+                    <div class="card-atom h-100">
+                        <h3 class="mb-4">Education</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h5>Qalai Murad Big High School</h5>
+                                <p class="timeline-date">Graduated - 2021</p>
+                                <p>Completed high school education with focus on sciences and technology.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4 slide-in-right">
+                    <div class="card-atom h-100">
+                        <h3 class="mb-4">Certifications</h3>
+                        <p>Completed comprehensive certification programs from Zoombyte IT Services:</p>
+                        <div class="mt-4">
+                            <div class="cert-badge d-block mb-3">Network+ Certification</div>
+                            <div class="cert-badge d-block mb-3">Cisco Certified Network Associate (CCNA)</div>
+                            <div class="cert-badge d-block mb-3">Cisco Certified Network Professional (CCNP)</div>
+                        </div>
+                        <p class="mt-4">These certifications have provided me with in-depth knowledge of networking concepts, routing and switching technologies, and advanced network infrastructure management.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="bg-dark">
+        <div class="container">
+            <h2 class="section-title fade-in">Skills</h2>
+            <div class="row mt-5">
+                <div class="col-lg-6 mb-4 slide-in-left">
+                    <div class="card-atom h-100">
+                        <h3 class="mb-4">Technical Skills</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Cisco IOS Configuration</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Routing Protocols (OSPF, EIGRP, BGP)</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Network Security (ACLs, NAT)</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Cisco Packet Tracer & PNETLAB</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Windows/Linux Systems</span>
+                                <span>82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="82"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4 slide-in-right">
+                    <div class="card-atom h-100">
+                        <h3 class="mb-4">Professional Skills</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Problem Solving</span>
+                                <span>94%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="94"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Technical Communication</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Team Collaboration</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Network Monitoring & Troubleshooting</span>
+                                <span>87%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="87"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>IT Support</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & References Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Contact & References</h2>
+            <div class="row mt-5">
+                <div class="col-lg-6 mb-4 slide-in-left">
+                    <div class="card-atom h-100">
+                        <h3 class="mb-4">Contact Information</h3>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="bi bi-telephone"></i>
+                                </div>
+                                <div>
+                                    <h6>Phone</h6>
+                                    <p>0784452030</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="bi bi-envelope"></i>
+                                </div>
+                                <div>
+                                    <h6>Email</h6>
+                                    <p>salihia281@gmail.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="bi bi-geo-alt"></i>
+                                </div>
+                                <div>
+                                    <h6>Address</h6>
+                                    <p>Salim karyan 12th District 2nd Street</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <i class="bi bi-linkedin"></i>
+                                </div>
+                                <div>
+                                    <h6>LinkedIn</h6>
+                                    <p>linkedin.com/Abdul Rahman</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="social-icons mt-4">
+                            <a href="#"><i class="bi bi-linkedin"></i></a>
+                            <a href="#"><i class="bi bi-twitter"></i></a>
+                            <a href="#"><i class="bi bi-github"></i></a>
+                            <a href="#"><i class="bi bi-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4 slide-in-right">
+                    <div class="card-atom h-100">
+                        <h3 class="mb-4">References</h3>
+                        <div class="card-atom p-3 mb-3" style="background: rgba(0, 217, 255, 0.05);">
+                            <h5>IT Engineer</h5>
+                            <p class="mb-1"><strong>Abdul Rahman "Salehi"</strong></p>
+                            <p class="mb-1">Phone: 0784452030</p>
+                            <p class="mb-1">Email: salihia281@gmail.com</p>
+                            <p class="mt-2"><em>Reference available upon your request</em></p>
+                        </div>
+                        <p class="mt-3">Professional references and verification of qualifications are available upon request. Please contact me directly to arrange for reference checks or to discuss potential opportunities.</p>
+                        <a href="mailto:salihia281@gmail.com" class="btn btn-atom mt-3">Request Reference</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <h3 class="mb-4">Abdul Rahman "Salehi"</h3>
+                    <p>IT Engineer specializing in networking, system administration, and IT support. Dedicated to creating efficient and secure IT environments.</p>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <h5 class="mb-4">Quick Navigation</h5>
+                    <div class="row">
+                        <div class="col-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#home" class="text-light text-decoration-none mb-2 d-block">Home</a></li>
+                                <li><a href="#about" class="text-light text-decoration-none mb-2 d-block">About</a></li>
+                                <li><a href="#experience" class="text-light text-decoration-none mb-2 d-block">Experience</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#education" class="text-light text-decoration-none mb-2 d-block">Education</a></li>
+                                <li><a href="#skills" class="text-light text-decoration-none mb-2 d-block">Skills</a></li>
+                                <li><a href="#contact" class="text-light text-decoration-none mb-2 d-block">Contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5 mb-4" style="border-color: rgba(0, 217, 255, 0.2);">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2023 Abdul Rahman Salehi. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>Interactive CV . <i class="bi bi-heart-fill text-danger"></i></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Scroll animations
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('active');
+                    
+                    // Animate skill bars when skills section is in view
+                    if (element.classList.contains('skill-progress')) {
+                        const width = element.getAttribute('data-width');
+                        element.style.width = width + '%';
+                    }
+                }
+            });
+        }
+
+        // Animate skill bars
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width + '%';
+            });
+        }
+
+        // Navbar background on scroll
+        function updateNavbar() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.padding = '0.8rem 0';
+                navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
+            } else {
+                navbar.style.padding = '1.2rem 0';
+                navbar.style.boxShadow = 'none';
+            }
+        }
+
+        // Initialize animations when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial scroll animation check
+            animateOnScroll();
+            updateNavbar();
+            
+            // Animate skill bars
+            animateSkillBars();
+            
+            // Handle scroll events
+            window.addEventListener('scroll', function() {
+                animateOnScroll();
+                updateNavbar();
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        const navbarToggler = document.querySelector('.navbar-toggler');
+                        const navbarCollapse = document.querySelector('.navbar-collapse');
+                        if (navbarCollapse.classList.contains('show')) {
+                            navbarToggler.click();
+                        }
+                    }
+                });
+            });
+
+            // Form submission for reference request
+            const referenceBtn = document.querySelector('a[href="mailto:salihia281@gmail.com"]');
+            referenceBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'mailto:salihia281@gmail.com?subject=Reference Request - Abdul Rahman Salehi&body=Dear Abdul Rahman,%0D%0A%0D%0AI would like to request a reference regarding your professional experience and qualifications.%0D%0A%0D%0APlease provide the necessary information at your earliest convenience.%0D%0A%0D%0ABest regards,';
+            });
+        });
+    </script>
+</body>
+</html>
